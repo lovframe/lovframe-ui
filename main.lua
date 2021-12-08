@@ -41,5 +41,4 @@ function love.draw()
     love.graphics.setColor(255,255,255)
     love.graphics.print("hello world", 0, 0)
     love.graphics.print(number, 300, 500)
-
 end
