@@ -1,12 +1,10 @@
 require("data/scripts/button")
 
 function love.load()
-    fps = love.timer.getFPS()
-
     love.graphics.setDefaultFilter("nearest", "nearest")
     love.mouse.setVisible(false)
 
-    button1 = simple_button:create("rect", "fill", 300, 100, 100, 100, 255, 255, 255, 255, 0, 255, hello, 1)
+    button1 = simple_button:create("rect", "fill", 300, 100, 100, 100, 255, 255, 255, 255, 0, 255, 1)
 end
 
 function love.update(dt)
@@ -18,8 +16,8 @@ function hello()
 end
 
 function love.mousepressed(x, y, button, istouch)
-    if button == 1 then
-        simple_button:onpressed()
+    if simple_button:onpressed(button) then
+        hello()
     end
 end
 
@@ -30,6 +28,5 @@ function love.draw()
     mouse_image = love.graphics.circle("fill", mouse_x, mouse_y, 10)
     
     love.graphics.setColor(255,255,255)
-    love.graphics.print("FPS: "..tostring(fps), 0, 0, nil, 2, 2)
-
+    love.graphics.print("hello world", 0, 0, nil, 2, 2)
 end
