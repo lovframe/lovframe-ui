@@ -1,7 +1,7 @@
 text_button = {}
 local hovered = false
 
-function text_button:create(type, text, text_x, text_y, mode, x, y, width, height, r, g, b, h_r, h_g, h_b, button)
+function text_button:create(type, mode, text, text_x, text_y, font_location, font_size, x, y, width, height, r, g, b, h_r, h_g, h_b, button)
     self.type = type
     self.mode = mode
     self.x = x
@@ -20,6 +20,9 @@ function text_button:create(type, text, text_x, text_y, mode, x, y, width, heigh
     self.text = text
     self.text_x = text_x
     self.text_y = text_y
+
+    self.font = font_location
+    self.font_size = font_size
 end
 
 function text_button:update(dt)
@@ -56,4 +59,9 @@ function text_button:draw()
         end
         love.graphics.rectangle(self.mode, self.x, self.y, self.width, self.height)
     end
+    
+    ttf_font = love.graphics.newFont(self.font, self.font_size)
+    love.graphics.setColor(0,0,0)        
+    love.graphics.setFont(ttf_font)
+    love.graphics.print(self.text, self.text_x, self.text_y)
 end
